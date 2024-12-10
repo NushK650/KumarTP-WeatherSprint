@@ -1,0 +1,173 @@
+@font-face{
+    font-family: Pirata One;
+    src: url(../Assets/fonts/Pirata_One/PirataOne-Regular.ttf);
+}
+
+
+body{
+    background-image: url(../Assets/images/Background-WeatherSprint.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
+    font-family: 'Pirata One', Arial, Helvetica, sans-serif;
+    
+}
+
+.dateNTime{
+display: flex;
+gap: 50px;
+justify-content: center;
+}
+
+::placeholder{
+    font-family: 'Pirata One', Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+
+
+input{
+    font-family: 'Pirata One', Arial, Helvetica, sans-serif;
+    background-color: #C38945E5;
+    border:0;
+    border-radius: 10px;
+}
+
+.mainCard{
+    background-color: #D1A879CC;
+    width: 531px;
+    height: 253px;
+   justify-self: center;
+    display: grid;
+    grid-template-rows: 2,1fr;
+    align-items: center;
+    padding: 20px;
+    
+   
+}
+
+
+
+#date {
+    font-size: 24px;
+   
+}
+
+#time {
+    font-size: 24px;
+    
+}
+
+
+#searchBar {
+    width: 300px;
+    padding: 10px;
+    justify-self: center;
+   display: flex;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+.mainCardTitle {
+    text-decoration: underline;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.mainCardTemp {
+   
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.mainCardBottom {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+   
+}
+
+#mainBottom{
+margin: 0;
+}
+
+.mainCardIcon {
+    grid-column: 2;
+    grid-row: 1;
+    /* this is just to hold place for the icon so that i can adjust later  */
+    display: flex; 
+    
+}
+
+.mainCardWeather {
+    grid-row: 3;
+    font-size: 18px;
+    font-weight: 600;
+   
+}
+
+
+.forecast-container {
+    display: flex;
+    justify-content:center;
+    margin: 20px;
+  
+   
+    background-color: #D1A879CC
+}
+
+.card {
+    border-left: solid;
+    
+    padding: 15px;
+    width: 18%; 
+    text-align: center;
+}
+.card1 {
+    
+    padding: 15px;
+    width: 18%; 
+    text-align: center;
+}
+   
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.temp {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.highLow {
+    font-size: 16px;
+   
+}
+
+
+
+
+
+
+
+
+
+  
+
