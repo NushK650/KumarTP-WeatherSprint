@@ -1,51 +1,61 @@
-@font-face{
+@font-face {
     font-family: Pirata One;
     src: url(../Assets/fonts/Pirata_One/PirataOne-Regular.ttf);
 }
 
 
-body{
+body {
     background-image: url(../Assets/images/Background-WeatherSprint.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    
     font-family: 'Pirata One', Arial, Helvetica, sans-serif;
-    
 }
 
-.dateNTime{
-display: flex;
-gap: 50px;
-justify-content: center;
+.dateNTime {
+    font-family: 'Pirata One', Arial, Helvetica, sans-serif;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
 }
 
-::placeholder{
+::placeholder {
     font-family: 'Pirata One', Arial, Helvetica, sans-serif;
     color: black;
 }
 
 
 
-input{
+input {
     font-family: 'Pirata One', Arial, Helvetica, sans-serif;
     background-color: #C38945E5;
-    border:0;
+    border: 0;
     border-radius: 10px;
 }
 
-.mainCard{
+.mainCard {
     background-color: #D1A879CC;
     width: 531px;
     height: 253px;
-   justify-self: center;
+    justify-self: center;
     display: grid;
-    grid-template-rows: repeat(2,1fr);
+    grid-template-rows: repeat(2, 1fr);
     align-items: center;
     padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Pirata One', Arial, Helvetica, sans-serif;
+    color: black;
+
 }
 
+.navbar-toggler {
+    border-radius: 0%;
+    border: none;
+    background-color: #C38945E5;
+    color: black;
 
+}
 
 #date {
     font-size: 24px;
@@ -58,9 +68,10 @@ input{
 
 #searchBar {
     width: 300px;
+    height: 50px;
     padding: 10px;
     justify-self: center;
-   display: flex;
+    display: flex;
     border-radius: 10px;
     font-size: 18px;
 }
@@ -79,7 +90,7 @@ input{
 }
 
 .mainCardTemp {
-   
+
     font-size: 50px;
     font-weight: 700;
 }
@@ -88,52 +99,56 @@ input{
     margin: 0;
     font-size: 16px;
     font-weight: 400;
-   
+
 }
 
-#mainBottom{
-margin: 0;
+
+#mainBottom {
+    margin: 0;
 }
 
 .mainCardIcon {
     grid-column: 2;
     grid-row: 1;
     /* this is just to hold place for the icon so that i can adjust later  */
-    display: flex; 
-    
+    display: flex;
+
 }
 
 .mainCardWeather {
     grid-row: 3;
     font-size: 18px;
     font-weight: 600;
-   
+
 }
 
 
 .forecast-container {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     margin: 20px;
-  
-   
+
+
     background-color: #D1A879CC
 }
 
-.card {
+.Card {
     border-left: solid;
-    
+    font-family: 'Pirata One', Arial, Helvetica, sans-serif;
     padding: 15px;
-    width: 18%; 
+    width: 18%;
     text-align: center;
+    color: black;
 }
+
 .card1 {
-    
+    font-family: 'Pirata One', Arial, Helvetica, sans-serif;
+    color: black;
     padding: 15px;
-    width: 18%; 
+    width: 18%;
     text-align: center;
 }
-   
+
 
 .title {
     font-size: 18px;
@@ -144,7 +159,7 @@ margin: 0;
 .temp {
     font-size: 32px;
     font-weight: bold;
-   
+
 }
 
 .icon {
@@ -154,16 +169,5 @@ margin: 0;
 
 .highLow {
     font-size: 16px;
-   
+
 }
-
-
-
-
-
-
-
-
-
-  
-
