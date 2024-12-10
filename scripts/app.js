@@ -34,6 +34,7 @@ const suffix = (day) => {
 
     };
 };
+setInterval(updateClock, 1000);
 
 function apiCall () {
     fetch(`api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`)
@@ -48,4 +49,3 @@ function apiCall () {
 apiCall();
 
 
-setInterval(updateClock, 1000);
