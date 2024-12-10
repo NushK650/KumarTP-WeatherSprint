@@ -1,6 +1,8 @@
 let previousMinutes = -1; 
 let date = document.getElementById("date");
 let time = document.getElementById("time");
+
+
 function updateClock() {
     const now = new Date(); 
     const year = now.getFullYear();
