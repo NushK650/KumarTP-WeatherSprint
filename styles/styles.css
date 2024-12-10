@@ -54,7 +54,9 @@ input {
     border: none;
     background-color: #C38945E5;
     color: black;
-
+}
+.navbar-toggler:hover{
+    border: 0px;
 }
 
 #date {
@@ -171,3 +173,4 @@ input {
     font-size: 16px;
 
 }
+

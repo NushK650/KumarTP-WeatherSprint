@@ -1,6 +1,7 @@
 let previousMinutes = -1;
 let date = document.getElementById("date");
 let time = document.getElementById("time");
+const dontClick = document.getElementById("dontClick")
 
 function updateClock() {
   const now = new Date();
@@ -38,16 +39,18 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 
-function apiCall() {
-  fetch(
-    `api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
+
+async function asycnGetData1(){
+  const promise = await fetch("api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}");
+  const data = await promise.json();
+  console.log(data);
 }
 
-apiCall();
+
+
+
+
+dontClick.addEventListener("click", function() {
+  asycnGetData1();
+
+});
