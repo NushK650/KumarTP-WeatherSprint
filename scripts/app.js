@@ -1,3 +1,4 @@
+import { APIKEY } from "./environment.js";
 let previousMinutes = -1;
 let date = document.getElementById("date");
 let time = document.getElementById("time");
@@ -41,9 +42,16 @@ setInterval(updateClock, 1000);
 
 
 async function asycnGetData1(){
-  const promise = await fetch("api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}");
-  const data = await promise.json();
-  console.log(data);
+  const promise1 = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=121.2908&lon=37.9577&appid=${APIKEY}`);
+  const data1 = await promise1.json();
+  console.log(data1);
+}
+asycnGetData1();
+
+async function asycnGetData2(){
+  const promise2 = await fetch("");
+  const data2 = await promise2.json();
+  console.log(data2);
 }
 
 
