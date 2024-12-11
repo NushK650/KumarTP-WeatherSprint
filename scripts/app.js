@@ -2,6 +2,9 @@ import { APIKEY } from "./environment.js";
 let previousMinutes = -1;
 let date = document.getElementById("date");
 let time = document.getElementById("time");
+let currentTemp = document.getElementById("currentTemp")
+let searchBar = document.getElementById("searchBar")
+
 const dontClick = document.getElementById("dontClick")
 
 function updateClock() {
@@ -41,12 +44,15 @@ function updateClock() {
 setInterval(updateClock, 1000);
 
 
-async function asycnGetData1(){
-  const promise1 = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=121.2908&lon=37.9577&appid=${APIKEY}`);
-  const data1 = await promise1.json();
-  console.log(data1);
+async function asycnGetData(city){
+  const promise = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=imperial`);
+  const data= await promise.json();
+ currentTemp.innerText = data.main.temp 
+
+  console.log(data);
+  console.log(city);
 }
-asycnGetData1();
+
 
 async function asycnGetData2(){
   const promise2 = await fetch("");
@@ -56,9 +62,9 @@ async function asycnGetData2(){
 
 
 
-
-
 dontClick.addEventListener("click", function() {
-  asycnGetData1();
-
+  let location = searchBar.value
+  asycnGetData(location);
+  
+  console.log(currentTemp);
 });
