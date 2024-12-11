@@ -147,10 +147,10 @@ async function asycnGetData(city) {
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=imperial`
   );
   const data = await promise.json();
-  currentTemp.innerText = Math.ceil(data.main.temp);
+  currentTemp.innerText = Math.round(data.main.temp);
   currentCondition.innerText = data.weather[0].main;
   currentIcon.innerHTML = data.weather[0].icon;
-  feelsLike.innerText = `Feels Like: ${ Math.ceil(data.main.feels_like)}`;
+  feelsLike.innerText = `Feels Like: ${ Math.round(data.main.feels_like)}`;
   console.log(data);
   console.log(city);
 }
