@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
-    <button id="dontClick"><H1>APICALL</H1></button>
+    <button id="dontClick"><h1>APICALL</h1></button>
     <!-- Date and Time -->
     <section>
       <div class="dateNTime">
@@ -18,8 +18,8 @@
 
     <!-- Search Bar + Favorites Button -->
     <section>
-        <!-- add the icon and use function to make it work -->
-        
+      <!-- add the icon and use function to make it work -->
+
       <input id="searchBar" type="text" placeholder="Location" />
       <!-- add  favorite star here  -->
     </section>
@@ -27,24 +27,20 @@
     <section>
       <div class="mainCard">
         <div class="mainCardTitle">
-          <p>Current</p>
+          <p id="currentDay">Current</p>
         </div>
         <div class="mainCardTemp">
           <p class="m-0" id="currentTemp">50°</p>
         </div>
         <div class="mainCardWeather">
-          <p>placeholder</p>
+          <p id="feelsLike">placeholder</p>
         </div>
-        <div class="mainCardIcon">
-          <p>placeholder</p>
+        <div id="currentIcon" class="mainCardIcon">
+           
         </div>
         <div class="mainCardBottom">
-          <p
-            id="mainBottom'
-                  "
-            class=""
-          >
-            placeholder
+          <p id="currentCondition">
+            placehold
           </p>
         </div>
       </div>
@@ -52,8 +48,8 @@
     <!-- Weekly Forecast Cards  -->
     <div class="forecast-container">
       <div id="day0Card" class="card1">
-        <div id="day0Title" class="title">
-          <p>placeholder</p>
+        <div  class="title">
+          <p id="day0Title">placeholder</p>
         </div>
         <div id="day0Temp" class="temp">
           <p>placeholder</p>
@@ -66,8 +62,8 @@
         </div>
       </div>
       <div id="day1Card" class="Card">
-        <div id="day1Title" class="title">
-          <p>placeholder</p>
+        <div  class="title">
+          <p id="day1Title">placeholder</p>
         </div>
         <div id="day1Temp" class="temp">
           <p>placeholder</p>
@@ -80,8 +76,8 @@
         </div>
       </div>
       <div id="day2Card" class="Card">
-        <div id="day2Title" class="title">
-          <p>placeholder</p>
+        <div class="title">
+          <p id="day2Title">placeholder</p>
         </div>
         <div id="day2Temp" class="temp">
           <p>placeholder</p>
@@ -94,8 +90,8 @@
         </div>
       </div>
       <div id="day3Card" class="Card">
-        <div id="day3Title" class="title">
-          <p>placeholder</p>
+        <div  class="title">
+          <p id="day3Title">placeholder</p>
         </div>
         <div id="day3Temp" class="temp">
           <p>placeholder</p>
@@ -108,8 +104,8 @@
         </div>
       </div>
       <div id="day4Card" class="Card">
-        <div id="day4Title" class="title">
-          <p>placeholder</p>
+        <div  class="title">
+          <p id="day4Title">placeholder</p>
         </div>
         <div id="day4Temp" class="temp">
           <p>placeholder</p>
@@ -123,8 +119,6 @@
       </div>
     </div>
 
-
-<script type="module" src="./scripts/app.js"></script>
-    
+    <script type="module" src="./scripts/app.js"></script>
   </body>
 </html>
