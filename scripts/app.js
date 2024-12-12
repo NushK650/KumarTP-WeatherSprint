@@ -6,6 +6,7 @@ let currentTemp = document.getElementById("currentTemp");
 let currentIcon = document.getElementById("currentIcon");
 let currentCondition = document.getElementById("currentCondition");
 let feelsLike = document.getElementById("feelsLike");
+let currentHiLow = document.getElementById("currentHiLow")
 let searchBar = document.getElementById("searchBar");
 
 let day0Title = document.getElementById("day0Title");
@@ -13,6 +14,12 @@ let day1Title = document.getElementById("day1Title");
 let day2Title = document.getElementById("day2Title");
 let day3Title = document.getElementById("day3Title");
 let day4Title = document.getElementById("day4Title");
+
+let sumDay1 = 0;
+let sumDay2 = 0;
+let sumDay3 = 0;
+let sumDay4 = 0;
+let sumDay5 = 0;
 
 
 
@@ -137,33 +144,75 @@ function updateClock() {
 setInterval(updateClock, 1000);
 
 
-  
 
 
+// this is so that i dont over do the api call bs 
 
+// async function asycnGetData(city) {
+//   const promise = await fetch(
+//     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=imperial`
+//   );
+//   const data = await promise.json();
+//   currentTemp.innerText = Math.round(data.main.temp);
+//   currentCondition.innerText = data.weather[0].main;
+//   currentIcon.innerHTML = data.weather[0].icon;
+//   feelsLike.innerText = `Feels Like: ${ Math.round(data.main.feels_like)}`;
+//   currentHiLow.innerText = `hi: ${Math.round(data.main.temp_max)} / low: ${Math.round(data.main.temp_min)}`;
+// };
 
-async function asycnGetData(city) {
-  const promise = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=imperial`
-  );
+async function asycnGetForecast(city) {
+  const promise = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q= ${city} &appid=${APIKEY}&units=imperial`);
   const data = await promise.json();
-  currentTemp.innerText = Math.round(data.main.temp);
-  currentCondition.innerText = data.weather[0].main;
-  currentIcon.innerHTML = data.weather[0].icon;
-  feelsLike.innerText = `Feels Like: ${ Math.round(data.main.feels_like)}`;
   console.log(data);
-  console.log(city);
-}
+  for (let i = 0; i < 8; i++){
+    sumDay1 += data.list[i].main.temp;
+   
+   
+  };
+  const averageDay1 = sumDay1/8
+   
+   console.log(averageDay1)
 
-async function asycnGetData2() {
-  const promise2 = await fetch("");
-  const data2 = await promise2.json();
-  console.log(data2);
-}
+   for (let i = 9; i < 16; i++){
+    sumDay2 += data.list[i].main.temp;
+    
+    
+   };
+   const averageDay2 = sumDay2/8
+    
+    console.log(averageDay2)
+
+    for (let i = 17; i < 24; i++){
+      sumDay3 += data.list[i].main.temp;
+      
+      
+     };
+     const averageDay3 = sumDay3/8
+      
+      console.log(averageDay3)
+      
+      for (let i = 25; i < 32; i++){
+        sumDay4 += data.list[i].main.temp;
+        
+        
+       };
+       const averageDay4 = sumDay4/8
+        
+        console.log(averageDay4)
+
+        for (let i = 33; i < 40; i++){
+          sumDay5 += data.list[i].main.temp;
+          
+      
+         };
+         const averageDay5 = sumDay5/8
+          
+          console.log(averageDay5)
+        };
 
 dontClick.addEventListener("click", function () {
   let location = searchBar.value;
-  asycnGetData(location);
-
-  console.log(currentTemp);
+  // asycnGetData(location);
+asycnGetForecast(location);
+  
 });
