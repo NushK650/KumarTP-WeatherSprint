@@ -2,12 +2,15 @@ import { APIKEY } from "./environment.js";
 let previousMinutes = -1;
 let date = document.getElementById("date");
 let time = document.getElementById("time");
+
 let currentTemp = document.getElementsByClassName("currentTemp");
-let currentIcon = document.getElementsByClassName("currentIcon");
+let currentIcon = document.getElementsById("currentIcon");
 let currentCondition = document.getElementById("currentCondition");
 let feelsLike = document.getElementById("feelsLike");
 let currentHiLow = document.getElementsByClassName("currentHiLow");
+
 let searchBar = document.getElementById("searchBar");
+
 
 let day1Title = document.getElementById("day1Title");
 let day2Title = document.getElementById("day2Title");
@@ -63,10 +66,10 @@ function updateClock() {
     "Saturday",
   ];
 
-  day1Title.innerText = week[(today + 1) % 6];
-  day2Title.innerText = week[(today + 2) % 6];
-  day3Title.innerText = week[(today + 3) % 6];
-  day4Title.innerText = week[(today + 4) % 6];
+  day1Title.innerText = week[(today + 1) % 7];
+  day2Title.innerText = week[(today + 2) % 7];
+  day3Title.innerText = week[(today + 3) % 7];
+  day4Title.innerText = week[(today + 4) % 7];
 
   const suffix = (day) => {
     if (day >= 11 && day <= 13) {
@@ -99,13 +102,17 @@ async function asycnGetData(city) {
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=imperial`
   );
   const data = await promise.json();
-  currentTemp.innerText = Math.round(data.main.temp);
+  currentTemp.innerText =` ${Math.round(data.main.temp)}°`;
   currentCondition.innerText = data.weather[0].main;
-  currentIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="${data.weather[0].main}">`;
   feelsLike.innerText = `Feels Like: ${Math.round(data.main.feels_like)}`;
   currentHiLow.innerText = `hi: ${Math.round(
     data.main.temp_max
   )} / low: ${Math.round(data.main.temp_min)}`;
+
+  if(data.weather[0].main == "Haze"){
+    currentIcon.innerHTML
+
+  }
 }
 
 async function asycnGetForecast(city) {
@@ -124,7 +131,7 @@ async function asycnGetForecast(city) {
   // Jacob and w3 schools helped me with this I wanted to try something new
   day1HighLow.innerText = `${Math.round(
     Math.max(...tempsOfDay1)
-  )} / ${Math.round(Math.min(...tempsOfDay1))}`;
+  )}°F / ${Math.round(Math.min(...tempsOfDay1))}°F`;
 
   for (let i = 9; i < 16; i++) {
     sumDay2 += data.list[i].main.temp;
@@ -135,7 +142,7 @@ async function asycnGetForecast(city) {
   // Jacob and w3 schools helped me with this I wanted to try something new
   day2HighLow.innerText = `${Math.round(
     Math.max(...tempsOfDay2)
-  )} / ${Math.round(Math.min(...tempsOfDay2))}`;
+  )}°F / ${Math.round(Math.min(...tempsOfDay2))}°F`;
 
   for (let i = 17; i < 24; i++) {
     sumDay3 += data.list[i].main.temp;
@@ -146,19 +153,28 @@ async function asycnGetForecast(city) {
   // Jacob and w3 schools helped me with this I wanted to try something new
   day3HighLow.innerText = `${Math.round(
     Math.max(...tempsOfDay3)
-  )} / ${Math.round(Math.min(...tempsOfDay3))}`;
+  )}°F / ${Math.round(Math.min(...tempsOfDay3))}°F`;
 
   for (let i = 25; i < 32; i++) {
     sumDay4 += data.list[i].main.temp;
     tempsOfDay4.push(data.list[i].main.temp);
-  }
+  };
   const averageDay4 = sumDay4 / 8;
   day4Temp.innerText = Math.round(averageDay4);
   // Jacob and w3 schools helped me with this I wanted to try something new
   day4HighLow.innerText = `${Math.round(
     Math.max(...tempsOfDay4)
-  )} / ${Math.round(Math.min(...tempsOfDay4))}`;
+  )}°F / ${Math.round(Math.min(...tempsOfDay4))}°F`;
+
+if(){
+  
 }
+
+
+
+
+
+};
 
 dontClick.addEventListener("click", function () {
   let location = searchBar.value;
