@@ -4,6 +4,13 @@
 }
 
 
+#searchBtn{
+    background-color: #C38945E5;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+   
+}
 body {
     background-image: url(../Assets/images/Background-WeatherSprint.jpeg);
     background-repeat: no-repeat;
@@ -46,8 +53,7 @@ input {
     background-color: #C38945E5;
     border: none;
     
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    
 }
 
 .mainCard {
