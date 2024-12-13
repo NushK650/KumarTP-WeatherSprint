@@ -5,11 +5,19 @@
 
 
 #searchBtn{
+    
     background-color: #C38945E5;
     border: none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: auto;
    
+}
+#starBtn{
+    margin-left: 8px;
+    width: 75px;
+    aspect-ratio: 1/1;
+    border-radius: 25px;
 }
 body {
     background-image: url(../Assets/images/Background-WeatherSprint.jpeg);
@@ -22,7 +30,8 @@ body {
 .dateNTime {
     font-family: 'Pirata One', Arial, Helvetica, sans-serif;
     display: flex;
-    gap: 50px;
+    gap: 160px;
+    margin: 0px;
     justify-content: center;
 }
 
@@ -38,8 +47,8 @@ body {
     justify-content: center;
 }
 #favoritesBtn{
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
     justify-content: center;
     align-items: center;
     width: 70px;
@@ -49,6 +58,7 @@ body {
 }
 
 input {
+    
     font-family: 'Pirata One', Arial, Helvetica, sans-serif;
     background-color: #C38945E5;
     border: none;
@@ -83,22 +93,26 @@ input {
 }
 
 #date {
-    font-size: 24px;
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0%;
 }
 
 #time {
-    font-size: 24px;
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0%;
 }
 
 
 #searchBar {
-    width: 300px;
-    height: 50px;
+    width: 362px;
+    height: auto;
     padding: 10px;
     justify-self: center;
     display: flex;
-   
-    font-size: 18px;
+   font-weight: 400;
+    font-size: 36px;
 }
 .currentTemp{
     font-size: 32px;
