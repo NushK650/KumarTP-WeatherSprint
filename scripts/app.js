@@ -1,13 +1,14 @@
 import { APIKEY } from "./environment.js";
+
 let previousMinutes = -1;
 let date = document.getElementById("date");
 let time = document.getElementById("time");
 
-let currentTemp = document.getElementsByClassName("currentTemp");
-let currentIcon = document.getElementsById("currentIcon");
+let currentTemp = document.getElementById("currentTemp");
+let currentIcon = document.getElementById("currentIcon");
 let currentCondition = document.getElementById("currentCondition");
 let feelsLike = document.getElementById("feelsLike");
-let currentHiLow = document.getElementsByClassName("currentHiLow");
+let currentHiLow = document.getElementById("currentHiLow");
 
 let searchBar = document.getElementById("searchBar");
 
@@ -125,14 +126,18 @@ async function asycnGetForecast(city) {
     sumDay1 += data.list[i].main.temp;
     tempsOfDay1.push(data.list[i].main.temp);
   }
-
   const averageDay1 = sumDay1 / 8;
   day1Temp.innerText = Math.round(averageDay1);
   // Jacob and w3 schools helped me with this I wanted to try something new
   day1HighLow.innerText = `${Math.round(
     Math.max(...tempsOfDay1)
   )}°F / ${Math.round(Math.min(...tempsOfDay1))}°F`;
-
+currentIcon.innerHTML
+day0
+day1Icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather[4].icon}@2x.png" alt="${data.weather[4].description}">`;
+day2Icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather[12].icon}@2x.png" alt="${data.weather[12].description}">`;
+day3Icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather[20].icon}@2x.png" alt="${data.weather[20].description}">`;
+day4Icon.innerHTML =`<img src="http://openweathermap.org/img/wn/${data.weather[28].icon}@2x.png" alt="${data.weather[28].description}">`;
   for (let i = 9; i < 16; i++) {
     sumDay2 += data.list[i].main.temp;
     tempsOfDay2.push(data.list[i].main.temp);
@@ -143,6 +148,9 @@ async function asycnGetForecast(city) {
   day2HighLow.innerText = `${Math.round(
     Math.max(...tempsOfDay2)
   )}°F / ${Math.round(Math.min(...tempsOfDay2))}°F`;
+
+
+
 
   for (let i = 17; i < 24; i++) {
     sumDay3 += data.list[i].main.temp;
@@ -155,6 +163,11 @@ async function asycnGetForecast(city) {
     Math.max(...tempsOfDay3)
   )}°F / ${Math.round(Math.min(...tempsOfDay3))}°F`;
 
+
+
+
+
+
   for (let i = 25; i < 32; i++) {
     sumDay4 += data.list[i].main.temp;
     tempsOfDay4.push(data.list[i].main.temp);
@@ -166,9 +179,8 @@ async function asycnGetForecast(city) {
     Math.max(...tempsOfDay4)
   )}°F / ${Math.round(Math.min(...tempsOfDay4))}°F`;
 
-if(){
-  
-}
+
+
 
 
 
