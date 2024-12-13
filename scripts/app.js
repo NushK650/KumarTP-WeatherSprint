@@ -48,63 +48,69 @@ let tempsOfDay4 = [];
 
 const searchBtn = document.getElementById("searchBtn");
 
-function updateClock() {
-  const now = new Date();
-  const year = now.getFullYear();
-  let day = now.getDate();
-  let today = now.getDay();
-  let month = now.toLocaleString("default", { month: "short" });
-  let hours = now.getHours();
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  const meridiem = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12 || 12;
 
-  const week = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  day1Title.innerText = week[(today + 1) % 7];
-  day2Title.innerText = week[(today + 2) % 7];
-  day3Title.innerText = week[(today + 3) % 7];
-  day4Title.innerText = week[(today + 4) % 7];
-
-  const suffix = (day) => {
-    if (day >= 11 && day <= 13) {
-      return "th";
-    }
-    switch (day % 10) {
-      case 1:
-        return "st";
-      case 2:
-        return "nd";
-      case 3:
-        return "rd";
-      default:
-        return "th";
-    }
-  };
-
-  if (minutes !== previousMinutes) {
-    date.innerText = `${month} ${day}${suffix(day)}, ${year}`;
-    time.innerText = `${hours}:${minutes}${meridiem}`;
-
-    previousMinutes = minutes;
-  }
-}
-
-setInterval(updateClock, 1000);
 
 async function asycnGetData(city) {
   const promise = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=imperial`
   );
   const data = await promise.json();
+  
+  let timestamp = data.timezone
+  console.log(timestamp)
+  // async function updateClock(timestamp) {
+  //   const now = new Date(Date.now() + timestamp * 1000);
+  //   const year = now.getFullYear();
+  //   let day = now.getDate();
+  //   let today = now.getDay();
+  //   let month = now.toLocaleString("default", { month: "short" });
+  //   let hours = now.getHours();
+  //   const minutes = now.getMinutes().toString().padStart(2, "0");
+  //   const meridiem = hours >= 12 ? "PM" : "AM";
+  //   hours = hours % 12 || 12;
+    
+  //   const week = [
+  //     "Sunday",
+  //     "Monday",
+  //     "Tuesday",
+  //     "Wednesday",
+  //     "Thursday",
+  //     "Friday",
+  //     "Saturday",
+  //   ];
+    
+  //   day1Title.innerText = week[(today + 1) % 7];
+  //   day2Title.innerText = week[(today + 2) % 7];
+  //   day3Title.innerText = week[(today + 3) % 7];
+  //   day4Title.innerText = week[(today + 4) % 7];
+    
+  //   const suffix = (day) => {
+  //     if (day >= 11 && day <= 13) {
+  //       return "th";
+  //     }
+  //     switch (day % 10) {
+  //       case 1:
+  //         return "st";
+  //         case 2:
+  //           return "nd";
+  //           case 3:
+  //             return "rd";
+  //             default:
+  //               return "th";
+  //             }
+  //           };
+            
+  //           if (minutes !== previousMinutes) {
+  //             date.innerText = `${month} ${day}${suffix(day)}, ${year}`;
+  //             time.innerText = `${hours}:${minutes}${meridiem}`;
+              
+  //             previousMinutes = minutes;
+  //           }
+  //         };
+  //         setInterval( updateClock, 1000);
+
+
+
   currentTemp.innerText =`${Math.round(data.main.temp)}°`;
   currentCondition.innerText = data.weather[0].main;
   feelsLike.innerText = `Feels Like: ${Math.round(data.main.feels_like)}`;
@@ -188,6 +194,7 @@ day4Icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[28]
 
 searchBtn.addEventListener("click", function () {
   let location = searchBar.value;
+
   asycnGetData(location);
   asycnGetForecast(location);
 });
