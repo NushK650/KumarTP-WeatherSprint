@@ -45,6 +45,7 @@ body {
 #searchSection{
     display: flex;
     justify-content: center;
+    margin-bottom: 107px;
 }
 #favoritesBtn{
     border-top-left-radius: 25px;
@@ -65,21 +66,40 @@ input {
     
     
 }
+#currentDay{
+    font-size: 36px;
+    margin: 0%;
+}
+#currentTemp{
+    font-size: 96px;
+    font-weight: 400;
+    margin-bottom: 21px;
+
+}
+
+#currentIcon{
+    width: 142px;
+    aspect-ratio: 1/1;
+    grid-row:  1/span 2;
+}
 
 .mainCard {
     background-color: #D1A879CC;
     width: 531px;
-    height: 253px;
+    height: 216px;
     justify-self: center;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
-    align-items: center;
-    padding: 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    
+    padding: 50px;
+    padding-top: 20px;
+    margin-bottom: 107px;
     font-family: 'Pirata One', Arial, Helvetica, sans-serif;
     color: black;
 
+}
+#feelsLike{
+    font-size: 24px;
 }
 
 .navbar-toggler {

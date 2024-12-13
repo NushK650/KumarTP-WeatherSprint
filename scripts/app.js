@@ -1,8 +1,12 @@
 import { APIKEY } from "./environment.js";
+import { saveToLocalStorageByName, getLocalStorage, removeFromLocalStorage } from "./localStorage.js";
 
 let previousMinutes = -1;
 let date = document.getElementById("date");
 let time = document.getElementById("time");
+const starBtn = document.getElementById("starBtn")
+const favoritesBtn = document.getElementById("favoritesBtn")
+const favoritesSection = document.getElementById("favoritesSection")
 
 let currentTemp = document.getElementById("currentTemp");
 let currentIcon = document.getElementById("currentIcon");
@@ -105,7 +109,7 @@ async function asycnGetData(city) {
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=imperial`
   );
   const data = await promise.json();
-
+  
   currentTemp.innerText = `${Math.round(data.main.temp)}°`;
   currentCondition.innerText = data.weather[0].main;
   feelsLike.innerText = `Feels Like: ${Math.round(data.main.feels_like)}`;
@@ -116,6 +120,10 @@ async function asycnGetData(city) {
   todayIcon.innerHTML = currentIcon.innerHTML;
   todayTemp.innerText = currentTemp.innerText;
 }
+starBtn.addEventListener("click",function(){
+  let location = searchBar.value;
+  saveToLocalStorageByName(location); 
+});
 
 async function asycnGetForecast(city) {
   const promise = await fetch(
@@ -176,6 +184,49 @@ async function asycnGetForecast(city) {
     Math.max(...tempsOfDay4)
   )}°F / ${Math.round(Math.min(...tempsOfDay4))}°F`;
 }
+
+function getfavorites(){
+  favoritesSection.innerHTML = "";
+  let favoritesList= getLocalStorage();
+  console.log(favoritesList);
+ 
+  favoritesList.map(fav => {
+    let option = document.createElement("p");
+    option.innerText = fav;
+
+    let deletebtn = document.createElement('button');
+    deletebtn.type = 'button';
+    deletebtn.className = "btn btn-danger mx-2";
+    deletebtn.textContent = "Delete Name";
+
+    
+    deletebtn.addEventListener('click', function () {
+        removeFromLocalStorage(names);
+        p.remove(); 
+    });
+
+    option.addEventListener('click', function(){
+      let location = option.innerText
+
+  asycnGetData(location);
+  asycnGetForecast(location);
+     
+    })
+    favoritesSection.appendChild(option);
+  })
+}
+
+
+
+
+favoritesBtn.addEventListener("click", function(){
+getfavorites();
+});
+
+favoritesBtn.addEventListener("blur", function(){
+  favoritesSection.innerHTML = ""
+})
+
 
 searchBtn.addEventListener("click", function () {
   let location = searchBar.value;
