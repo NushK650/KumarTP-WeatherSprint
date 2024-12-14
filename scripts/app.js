@@ -7,7 +7,7 @@ let time = document.getElementById("time");
 const starBtn = document.getElementById("starBtn")
 const favoritesBtn = document.getElementById("favoritesBtn")
 const favoritesSection = document.getElementById("favoritesSection")
-
+const info = document.getElementById("info")
 let currentTemp = document.getElementById("currentTemp");
 let currentIcon = document.getElementById("currentIcon");
 let currentCondition = document.getElementById("currentCondition");
@@ -186,45 +186,52 @@ async function asycnGetForecast(city) {
 }
 
 function getfavorites(){
-  favoritesSection.innerHTML = "";
+  info.innerHTML = "";
   let favoritesList= getLocalStorage();
   console.log(favoritesList);
  
   favoritesList.map(fav => {
-    let option = document.createElement("p");
-    option.innerText = fav;
-
+    let option = document.createElement("div"); 
+    option.className = "favorite-item"; 
+    option.innerHTML = `<p>${fav}</p>`; 
+    
     let deletebtn = document.createElement('button');
     deletebtn.type = 'button';
-    deletebtn.className = "btn btn-danger mx-2";
-    deletebtn.textContent = "Delete Name";
+    deletebtn.className = "btn";
+    let deleteIcon = document.createElement("img");
+    deleteIcon.src = "./Assets/images/X.png";
+    deleteIcon.alt = "Delete";
 
-    
+    deletebtn.appendChild(deleteIcon);
+  
     deletebtn.addEventListener('click', function () {
-        removeFromLocalStorage(names);
-        p.remove(); 
+        removeFromLocalStorage(fav); 
+        option.remove(); 
     });
-
+  
     option.addEventListener('click', function(){
-      let location = option.innerText
-
-  asycnGetData(location);
-  asycnGetForecast(location);
-     
-    })
-    favoritesSection.appendChild(option);
-  })
-}
-
+      asycnGetData(fav);
+      asycnGetForecast(fav);
+    });
+  
+    option.appendChild(deletebtn); 
+    info.appendChild(option); 
+  });
+};
+  
+favoritesSection.classList.add("hidden");
 
 
 
 favoritesBtn.addEventListener("click", function(){
 getfavorites();
+favoritesSection.classList.remove("hidden")
 });
 
-favoritesBtn.addEventListener("blur", function(){
-  favoritesSection.innerHTML = ""
+favoritesBtn.addEventListener("dblclick", function(){
+  
+      info.innerHTML = "";
+      favoritesSection.classList.add("hidden");
 })
 
 
